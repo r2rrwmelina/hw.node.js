@@ -1,9 +1,9 @@
-import {defineConfig} from "eslint/config";
-import prettierConfig from "eslint-config-prettier/flat";
+import js from "@eslint/js";
+import globals from "globals";
+import { defineConfig } from "eslint/config";
 
 export default defineConfig([
-  {
-    files: ["**/*.js", "**/*.cjs", "**/*.mjs"],
+  { files: ["**/*.{js,mjs,cjs}"], plugins: { js }, extends: ["js/recommended"], languageOptions: { globals: globals.browser },
     rules: {
       "prefer-const": "warn",
       "no-constant-binary-expression": "error",
@@ -12,7 +12,14 @@ export default defineConfig([
       "no-shadow": "error",
       "prefer-spread": "warn",
       "prefer-rest-params": "warn",
+      "no-setter-return": "error",
+      "valid-typeof": "error",
+      "array-bracket-spacing": ["error", "never"],
+      "no-trailing-spaces": "error",
+      "object-curly-spacing": ["error", "always"],
+      "semi": ["error", "always"],
+      "quotes": ["error", "double"],
+      "no-debugger": "off",
     },
   },
-  prettierConfig,
 ]);
